@@ -13,21 +13,15 @@ var threeSumClosest = function(nums, target) {
         while(l < r) {
             let sum = nums[i] + nums[l] + nums[r];
             if(sum === target) {
-                results.push([nums[i], nums[l], nums[r]]);
-                while(nums[r] === nums[r-1]) {
-                    r--;
-                }
-
-                while(nums[l] === nums[l+1]) {
-                    l++;
-                }
-                r--;
-                l++;
-            } else if(sum > 0) {
-                r--;
-            } else if(sum < 0) {
-                l++;
+                return sum;
+            } else {
+                results
             }
+            // else if(sum > 0) {
+            //     r--;
+            // } else if(sum < 0) {
+            //     l++;
+            // }
         }
     }
     return results;
