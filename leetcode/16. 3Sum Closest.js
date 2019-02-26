@@ -5,9 +5,8 @@
  */
 var threeSumClosest = function(nums, target) {
     nums = nums.sort((a,b) => a -b);
-    let results = [], length = nums.length;
+    let closest = 0, offset = Infinity, length = nums.length;
     for(let i = 0; i < length - 1; i++) {
-        if(nums[i] > target) break;
         if(i > 0 && nums[i] === nums[i - 1]) continue;
         let l = i + 1, r = length - 1;
         while(l < r) {
@@ -15,16 +14,16 @@ var threeSumClosest = function(nums, target) {
             if(sum === target) {
                 return sum;
             } else {
-                results
+                if(Math.abs(sum - target) < offset) {
+                    offset = Math.abs(sum - target);
+                    closest = sum;
+                }
+
+                sum > target ? r-- : l++;
             }
-            // else if(sum > 0) {
-            //     r--;
-            // } else if(sum < 0) {
-            //     l++;
-            // }
         }
     }
-    return results;
+    return closest;
 };
 
-threeSum([-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0]);
+threeSumClosest([1,1,1,1], 0);
